@@ -45,7 +45,7 @@ function db = main (varargin)
                     part4(w, zeta);
                     continue
                 otherwise
-                    continue
+                    error ("No available options");
             end
         end
     end
@@ -73,8 +73,8 @@ function db = main (varargin)
         [str, i] = cLegend(b, '\omega_d');
         figure(f2);
         legend(str);
-        str{i+1, 1} = "Envelope";
         figure(f1);
+        str{i+1, 1} = "Envelope";
         legend(str);
         title("Step Response of Varying Imaginary Part of Poles");
         j = 1;
@@ -92,10 +92,9 @@ function db = main (varargin)
         str = cLegend(a, '\alpha');
         figure(f1);
         legend(str);
+        title("Step Response of Varying Real Part of Poles");
         figure(f2);
         legend(str);
-        figure(f1);
-        title("Step Response of Varying Real Part of Poles");
         j = 1;
         for i = db{2}
             fprintf([num2str(j), ") ", num2str(a(j)), "\n"]);
@@ -117,10 +116,9 @@ function db = main (varargin)
         [db{3},f1,f2] = part(a, b, @setWnRatio);
         figure(f1);
         legend(str);
+        title('Step Response of Varying Damping Ratio, \zeta of system');
         figure(f2);
         legend(str);
-        figure(f1);
-        title('Step Response of Varying Damping Ratio, \zeta of system');
         j = 1;
         for i = db{3}
             fprintf([num2str(j), ") ", num2str(b(j)), "\n"]);
@@ -136,10 +134,9 @@ function db = main (varargin)
         str = cLegend(a, '\omega_n');
         figure(f1);
         legend(str);
+        title('Step Response of Varying Natural Frequency, \omega_n of system');
         figure(f2);
         legend(str);
-        figure(f1);
-        title('Step Response of Varying Natural Frequency, \omega_n of system');
         j = 1;
         for i = db{4}
             fprintf([num2str(j), ") ", num2str(a(j)), "\n"]);
